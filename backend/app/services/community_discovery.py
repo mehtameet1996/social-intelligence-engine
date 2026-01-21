@@ -12,9 +12,6 @@ class CommunityDiscoveryService:
     Uses public Reddit JSON endpoints.
     """
 
-    def __init__(self, db: Session):
-        self.db = db
-
     async def discover_subreddits(self, company_domain: str) -> List[Dict]:
         company = self._extract_company_name(company_domain)
 

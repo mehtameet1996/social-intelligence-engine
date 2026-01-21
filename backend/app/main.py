@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.api_v1.api import api_router
-from app.db.init_db import init_db
 
 app = FastAPI(
     title="Social Intelligence Engine",
@@ -19,12 +18,6 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix="/api/v1")
-
-
-@app.on_event("startup")
-def on_startup():
-    init_db()
-
 
 @app.get("/")
 def root():
